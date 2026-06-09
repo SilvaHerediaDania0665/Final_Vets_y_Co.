@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Inventario - Vets & Co.</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #9EC7D9;
+    margin: 0px;
+    margin-top: 120px;
+    font-family: Verdana, Century Gothic;
+}
+
+header {
+    background-color: #FDFF85;
+    padding: 30px;
+
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    font-family: Century Gothic;
+    color: #FFC34F;
+
+    clip-path: ellipse(70% 100% at 50% 0%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    z-index: 1000;
+}
+
+header img {
+    position: absolute;
+    top: 40%;
+    left: 20px;
+    transform: translateY(-50%);
+    width: 90px;
+}
+
+nav { 
+    background-color: #86C2D9; 
+    padding-top: 50px; 
+    padding-bottom: 20px;
+    text-align: center;  
+    position: fixed; 
+    top: 83px; 
+    clip-path: ellipse(65% 100% at 50% 0%);
+    width: 100%;  
+    z-index: 999; 
+
+}
+
+nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+    margin: 0 30px;
+    font-size: 18px;
+    font-family: Century Gothic;
+    font-weight: bold;
+}
+
+.adecoracion {
+    background-color: #FFFFFF;
+    padding: 315px;
+    margin-top: 200px;
+    clip-path: ellipse(70% 100% at 50% 100%);
+}
+
+.bdecoracion {
+    background-color: #FFFFFF;
+    padding: 315px;
+    margin-top: 0px;
+    clip-path: ellipse(70% 100% at 50% 0%);
+}
+
+h2 {
+    color: #2F4B52;
+    font-size: 25px;
+    font-family: Century Gothic;
+    font-weight: bold;
+    position: absolute;
+    top: 250px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.form-container {
+    background: #9EC7D9;
+    max-width: 600px;
+    width: 95%;
+    padding: 50px;
+    border-radius: 12px;
+    position: absolute;
+    top: 350px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 99;
+}
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #2F4B52;
+    font-size: 17px;
+    font-family: Century Gothic;
+}
+
+input[type="text"], input[type="number"], input[type="date"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #E0D0DD;
+    border-radius: 6px;
+    font-family: Century Gothic;
+    font-size: 18px;
+    background-color: #FAF7FA;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #E0D0DD;
+    border-radius: 6px;
+    font-family: Century Gothic;
+    font-size: 18px;
+    background-color: #FAF7FA;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.boton {
+    background-color: #639099;
+    color: #FFFFFF;
+    border: none;
+    padding: 14px 15px;
+    width: 100%;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: Century Gothic;
+    margin-top: 10px;
+}
+
+table {
+    border-collapse: separate;
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: center;
+    vertical-align: middle;
+    margin-left: auto; 
+    margin-right: auto;
+    margin-top: 50px;
+}
+
+th {
+    background-color: #FFFFFF;
+    font-family: Century Gothic;
+    font-weight: bold;
+    width: 130px;
+    height: 80px;
+    color: #2F4B52;
+}
+
+td {
+    background-color: #DBDBDB;
+    font-family: Century Gothic;
+    width: 130px;
+    height: 80px;
+    color: #000000;
+}
+
+.decoracion {
+    background-color: #FAFAFA;
+    padding: 100px;
+    margin-top: 50px;
+    margin-bottom: -200px;
+    clip-path: ellipse(55% 100% at 50% 100%);
+}
+
+footer {
+    background-color: #FFC34F;
+    clip-path: ellipse(65% 100% at 50% 100%);
+    margin-top: 50px;
+    margin-bottom: 0px;
+    padding: 100px;
+    
+    text-align: center;
+    color: #FFFFFF;
+    font-family: Century Gothic;
+    font-weight: bold;
+    line-height: 1.5;
+    letter-spacing: 3px;
+}
+
+</style>
+</head>
+
+<body>
+
+    <header>
+      <img src="Logo_VyC.png" alt="logo">
+      <span>Vets & Co.</span>
+    </header>
+
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="fmascotas.html">Mascotas</a>
+      <a href="fduenos.html">Dueños</a>
+      <a href="fhistorial.html">Historial Médico</a>
+      <a href="fempleados.html">Empleados</a>
+      <a href="finventario.html">Inventario</a>
+    </nav>
+
+  <main>
+
+    <section class="adecoracion">
+      <h2>Registrar Producto</h2>
+    </section>
+
+    <section class="bdecoracion">
+    </section> 
+    
+    <div class="form-container">
+      <form action="/apifinventario" method="POST">
+
+        <div class="form-group">
+          <label>Nombre del Producto</label>
+          <input type="text" name="nombre_producto" placeholder="Ej: Amoxicilina 250mg" required>
+        </div>
+
+        <div class="form-group">
+          <label>Categoría</label>
+          <input type="text" name="categoria" placeholder="Ej: Medicamento" required>
+        </div>
+
+        <div class="form-group">
+          <label>Cantidad Disponible</label>
+          <input type="number" name="cantidad" placeholder="Escribir '-' si no hay registro" required>
+        </div>
+
+        <div class="form-group">
+          <label>Precio Unitario</label>
+          <input type="text" name="precio" placeholder="Ej: $18 MXN" required>
+        </div>
+
+        <div class="form-group">
+          <label>Proveedor</label>
+          <input type="text" name="proveedor" placeholder="ZooFarma S.A." required>
+        </div>
+
+        <div class="form-group">
+          <label>Contacto Proveedor</label>
+          <input type="number" name="contacto" placeholder="553 345 7789" required>
+        </div>
+
+        <div class="form-group">
+          <label>Ubicación Producto</label>
+          <input type="text" name="ubicacion" placeholder="Almacén - Estante 1" required>
+        </div>
+
+        <div class="form-group">
+          <label>Fecha de Caducidad</label>
+          <input type="date" name="fecha_caducidad" required>
+        </div>
+
+        <button type="submit" class="boton">Registrar</button>
+
+      </form>
+    </div>
+
+    <div style="text-align: center; margin-top: 50px; margin-bottom: 20px;">
+      <input type="number" id="input-buscar" placeholder="Escribe el ID del producto" style="width: 280px; display: inline-block; padding: 10px; margin-right: 10px; font-family: Century Gothic; border-radius: 6px; border: 1px solid #639099; font-size: 16px;">
+      <button onclick="buscarRegistro()" class="boton" style="width: 120px; display: inline-block; margin-top: 0; padding: 11px;">Buscar</button>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID Producto</th>
+          <th>Nombre del Producto</th>
+          <th>Categoría</th>
+          <th>Cantidad</th>
+          <th>Precio</th>
+          <th>Proveedor</th>
+          <th>Contacto</th>
+          <th>Ubicación</th>
+          <th>Fecha Caducidad</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody id="tabla-inventario"></tbody>
+    </table>
+
+  </main>
+
+  <section class="decoracion">
+  </section>
+  
+    <footer>
+      <p>Nombre: Dania Graciela Silva Heredia</p>
+      <p>No. Control: 24308051280665</p>
+      <p>Grado y grupo: 4ºI</p>
+      <p>Especialidad: Programación</p>
+    </footer>
+
+    <script>
+        let idInventarioEdicion = null;
+      
+        function cargarTabla() {
+            fetch('/obtenerinventario')
+                .then(res => res.json())
+                .then(productos => actualizarTabla(productos))
+                .catch(err => console.error("Error al cargar la tabla:", err));
+        }
+      
+        function actualizarTabla(lista) {
+            const cuerpoTabla = document.getElementById('tabla-inventario');
+            if(!cuerpoTabla) return;
+            cuerpoTabla.innerHTML = ''; 
+      
+            if (!lista || lista.length === 0 || lista[0] === null) {
+                cuerpoTabla.innerHTML = `<tr><td colspan="10" style="background:#DBDBDB; color:#2F4B52; font-weight:bold; padding: 20px;">No se encontraron registros</td></tr>`;
+                return;
+            }
+      
+            lista.forEach(item => {
+                if(!item) return;
+                
+                let fechaFormateada = '';
+                if (item.fecha_caducidad) {
+                    const fecha = new Date(item.fecha_caducidad);
+                    fechaFormateada = fecha.toLocaleDateString('es-MX', { timeZone: 'UTC' });
+                }
+                
+                const fila = document.createElement('tr');
+                fila.innerHTML = `
+                    <td>${item.id_producto || ''}</td>
+                    <td>${item.nombre_producto || ''}</td>
+                    <td>${item.categoria || ''}</td>
+                    <td>${item.cantidad || '0'}</td>
+                    <td>${item.precio || ''}</td>
+                    <td>${item.proveedor || ''}</td>
+                    <td>${item.contacto || ''}</td>
+                    <td>${item.ubicacion || ''}</td>
+                    <td>${fechaFormateada || '-'}</td>
+                    <td>
+                        <button class="btn-editar" style="background:#639099; color:white; border:none; padding:5px 10px; border-radius:4px; cursor:pointer; font-weight:bold; margin-bottom:4px; width:90px; font-family:Century Gothic;">Editar</button>
+                        <button class="btn-borrar" style="background:#B03F58; color:white; border:none; padding:5px 10px; border-radius:4px; cursor:pointer; font-weight:bold; width:90px; font-family:Century Gothic;">Borrar</button>
+                    </td>
+                `;
+      
+                fila.querySelector('.btn-editar').addEventListener('click', () => {
+                    prepararEdicion(item);
+                });
+      
+                fila.querySelector('.btn-borrar').addEventListener('click', () => {
+                    eliminarRegistro(item.id_producto, item.nombre_producto);
+                });
+                
+                cuerpoTabla.appendChild(fila); 
+            });
+        }
+      
+        function buscarRegistro() {
+            const idInput = document.getElementById('input-buscar').value.trim();
+            if(!idInput) {
+                cargarTabla();
+                return;
+            }
+      
+            fetch(`/buscar-inventario-por-id/${idInput}`)
+                .then(res => {
+                    if(!res.ok) throw new Error("No se encontró ningún producto con ese ID");
+                    return res.json();
+                })
+                .then(data => actualizarTabla(data))
+                .catch(err => {
+                    alert(err.message);
+                    cargarTabla();
+                });
+        }
+      
+        function eliminarRegistro(id, nombreProducto) {
+            if(confirm(`¿Estás seguro de eliminar el producto ID [${id}] - "${nombreProducto}" del inventario?`)) {
+                fetch(`/borrar-inventario-por-id/${id}`, { method: 'POST' })
+                    .then(res => {
+                        if(!res.ok) throw new Error("No se pudo eliminar");
+                        return res.json();
+                    })
+                    .then(() => {
+                        alert(`El producto "${nombreProducto}" fue eliminado con éxito`);
+                        cargarTabla(); 
+                    })
+                    .catch(err => alert("Ocurrió un error al intentar borrar"));
+            }
+        }
+      
+        function prepararEdicion(item) {
+            idInventarioEdicion = item.id_producto;
+      
+            document.getElementsByName('nombre_producto')[0].value = item.nombre_producto || '';
+            document.getElementsByName('categoria')[0].value = item.categoria || '';
+            document.getElementsByName('cantidad')[0].value = item.cantidad || '';
+            document.getElementsByName('precio')[0].value = item.precio || '';
+            document.getElementsByName('proveedor')[0].value = item.proveedor || '';
+            document.getElementsByName('contacto')[0].value = item.contacto || '';
+            document.getElementsByName('ubicacion')[0].value = item.ubicacion || '';
+            
+            if (item.fecha_caducidad) {
+                const fechaISO = item.fecha_caducidad.split('T')[0];
+                document.getElementsByName('fecha_caducidad')[0].value = fechaISO;
+            } else {
+                document.getElementsByName('fecha_caducidad')[0].value = '';
+            }
+      
+            const botonForm = document.querySelector('.form-container .boton');
+            botonForm.innerText = "Guardar Cambios";
+            botonForm.style.background = "#639099";
+      
+            window.scrollTo({ top: 150, behavior: 'smooth' });
+        }
+      
+        window.addEventListener('DOMContentLoaded', () => {
+            cargarTabla(); 
+      
+            const formulario = document.querySelector('.form-container form');
+            formulario.addEventListener('submit', function(e) {
+                if (idInventarioEdicion !== null) {
+                    e.preventDefault(); 
+      
+                    const datosFormulario = {
+                        nombre_producto: document.getElementsByName('nombre_producto')[0].value,
+                        categoria: document.getElementsByName('categoria')[0].value,
+                        cantidad: document.getElementsByName('cantidad')[0].value,
+                        precio: document.getElementsByName('precio')[0].value,
+                        proveedor: document.getElementsByName('proveedor')[0].value,
+                        contacto: document.getElementsByName('contacto')[0].value,
+                        ubicacion: document.getElementsByName('ubicacion')[0].value,
+                        fecha_caducidad: document.getElementsByName('fecha_caducidad')[0].value
+                    };
+      
+                    fetch(`/editar-inventario-por-id/${idInventarioEdicion}`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(datosFormulario)
+                    })
+                    .then(res => {
+                        if(!res.ok) throw new Error("Error al guardar los cambios");
+                        return res.json();
+                    })
+                    .then(() => {
+                        alert("Producto actualizado con éxito");
+                        formulario.reset();
+                        idInventarioEdicion = null;
+      
+                        const botonForm = formulario.querySelector('.boton');
+                        botonForm.innerText = "Registrar";
+                        botonForm.style.background = "#639099";
+      
+                        cargarTabla();
+                    })
+                    .catch(err => alert(err.message));
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

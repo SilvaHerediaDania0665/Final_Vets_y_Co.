@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Historial Médico - Vets & Co.</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #9EC7D9;
+    margin: 0px;
+    margin-top: 120px;
+    font-family: Verdana, Century Gothic;
+}
+
+header {
+    background-color: #FDFF85;
+    padding: 30px;
+
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    font-family: Century Gothic;
+    color: #FFC34F;
+
+    clip-path: ellipse(70% 100% at 50% 0%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    z-index: 1000;
+}
+
+header img {
+    position: absolute;
+    top: 40%;
+    left: 20px;
+    transform: translateY(-50%);
+    width: 90px;
+}
+
+nav { 
+    background-color: #86C2D9; 
+    padding-top: 50px; 
+    padding-bottom: 20px;
+    text-align: center;  
+    position: fixed; 
+    top: 83px; 
+    clip-path: ellipse(65% 100% at 50% 0%);
+    width: 100%;  
+    z-index: 999; 
+
+}
+
+nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+    margin: 0 30px;
+    font-size: 18px;
+    font-family: Century Gothic;
+    font-weight: bold;
+}
+
+.adecoracion {
+    background-color: #FFFFFF;
+    padding: 300px;
+    margin-top: 200px;
+    clip-path: ellipse(70% 100% at 50% 100%);
+}
+
+.bdecoracion {
+    background-color: #FFFFFF;
+    padding: 300px;
+    margin-top: 0px;
+    clip-path: ellipse(70% 100% at 50% 0%);
+}
+
+h2 {
+    color: #2F4B52;
+    font-size: 25px;
+    font-family: Century Gothic;
+    font-weight: bold;
+    position: absolute;
+    top: 250px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.form-container {
+    background: #9EC7D9;
+    max-width: 600px;
+    width: 95%;
+    padding: 50px;
+    border-radius: 12px;
+    position: absolute;
+    top: 350px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 99;
+}
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #2F4B52;
+    font-size: 17px;
+    font-family: Century Gothic;
+}
+
+input[type="text"], input[type="number"], input[type="date"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #E0D0DD;
+    border-radius: 6px;
+    font-family: Century Gothic;
+    font-size: 18px;
+    background-color: #FAF7FA;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.boton {
+    background-color: #639099;
+    color: #FFFFFF;
+    border: none;
+    padding: 14px 15px;
+    width: 100%;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: Century Gothic;
+    margin-top: 10px;
+}
+
+table {
+    border-collapse: separate;
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: center;
+    vertical-align: middle;
+    margin-left: auto; 
+    margin-right: auto;
+    margin-top: 50px;
+}
+
+th {
+    background-color: #FFFFFF;
+    font-family: Century Gothic;
+    font-weight: bold;
+    width: 140px;
+    height: 80px;
+    color: #2F4B52;
+}
+
+td {
+    background-color: #DBDBDB;
+    font-family: Century Gothic;
+    width: 140px;
+    height: 80px;
+    color: #000000;
+}
+
+.decoracion {
+    background-color: #FAFAFA;
+    padding: 100px;
+    margin-top: 50px;
+    margin-bottom: -200px;
+    clip-path: ellipse(55% 100% at 50% 100%);
+}
+
+footer {
+    background-color: #FFC34F;
+    clip-path: ellipse(65% 100% at 50% 100%);
+    margin-top: 50px;
+    margin-bottom: 0px;
+    padding: 100px;
+    
+    text-align: center;
+    color: #FFFFFF;
+    font-family: Century Gothic;
+    font-weight: bold;
+    line-height: 1.5;
+    letter-spacing: 3px;
+}
+
+</style>
+</head>
+
+<body>
+
+    <header>
+      <img src="Logo_VyC.png" alt="logo">
+      <span>Vets & Co.</span>
+    </header>
+    
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="fmascotas.html">Mascotas</a>
+      <a href="fduenos.html">Dueños</a>
+      <a href="fhistorial.html">Historial Médico</a>
+      <a href="fempleados.html">Empleados</a>
+      <a href="finventario.html">Inventario</a>
+    </nav>
+
+  <main>
+
+    <section class="adecoracion">
+      <h2>Registrar Historial Médico</h2>
+    </section>
+
+    <section class="bdecoracion">
+    </section> 
+    
+    <div class="form-container">
+      <form action="/apifhistorial" method="POST">
+
+        <div class="form-group">
+          <label>Nombre de la Mascota</label>
+          <input type="text" name="nombre_mascota" placeholder="Ej: Molly" required>
+        </div>
+
+        <div class="form-group">
+          <label>Enfermedades</label>
+          <input type="text" name="enfermedades" placeholder="Escribir '-' si no hay registro" required>
+        </div>
+
+        <div class="form-group">
+          <label>Cirugías</label>
+          <input type="text" name="cirugias" placeholder="Escribir '-' si no hay registro" required>
+        </div>
+
+        <div class="form-group">
+          <label>Alergías</label>
+          <input type="text" name="alergias" placeholder="Escribir '-' si no hay registro" required>
+        </div>
+
+        <div class="form-group">
+          <label>Medicación Actual</label>
+          <input type="text" name="medicacion" placeholder="Escribir '-' si no hay registro" required>
+        </div>
+
+        <div class="form-group">
+          <label>Vacunas</label>
+          <input type="text" name="vacunas" placeholder="Escribir '-' si no hay registro" required>
+        </div>
+
+        <div class="form-group">
+          <label>Desparasitación</label>
+          <input type="date" name="desparasitacion">
+        </div>
+
+        <button type="submit" class="boton">Registrar</button>
+
+      </form>
+    </div>
+
+    <div style="text-align: center; margin-top: 50px; margin-bottom: 20px;">
+      <input type="number" id="input-buscar" placeholder="Escribe el ID del historial" style="width: 280px; display: inline-block; padding: 10px; margin-right: 10px; font-family: Century Gothic; border-radius: 6px; border: 1px solid #639099; font-size: 16px;">
+      <button onclick="buscarRegistro()" class="boton" style="width: 120px; display: inline-block; margin-top: 0; padding: 11px;">Buscar</button>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID Historial</th>
+          <th>Nombre de la mascota</th>
+          <th>Enfermedades</th>
+          <th>Cirugías</th>
+          <th>Alergías</th>
+          <th>Medicación Actual</th>
+          <th>Vacunas</th>
+          <th>Desparasitación</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody id="tabla-historial"></tbody>
+    </table>
+
+  </main>
+
+  <section class="decoracion">
+  </section>
+  
+    <footer>
+      <p>Nombre: Dania Graciela Silva Heredia</p>
+      <p>No. Control: 24308051280665</p>
+      <p>Grado y grupo: 4ºI</p>
+      <p>Especialidad: Programación</p>
+    </footer>
+
+    <script>
+        let idHistorialEdicion = null;
+      
+        function cargarTabla() {
+            fetch('/obtenerhistorial')
+                .then(res => res.json())
+                .then(historiales => actualizarTabla(historiales))
+                .catch(err => console.error("Error al cargar la tabla:", err));
+        }
+      
+        function actualizarTabla(lista) {
+            const cuerpoTabla = document.getElementById('tabla-historial');
+            if(!cuerpoTabla) return;
+            cuerpoTabla.innerHTML = ''; 
+      
+            if (!lista || lista.length === 0 || lista[0] === null) {
+                cuerpoTabla.innerHTML = `<tr><td colspan="9" style="background:#DBDBDB; color:#2F4B52; font-weight:bold; padding: 20px;">No se encontraron registros</td></tr>`;
+                return;
+            }
+      
+            lista.forEach(historial => {
+                if(!historial) return;
+                
+                let fechaFormateada = '';
+                if (historial.desparasitacion) {
+                    const fecha = new Date(historial.desparasitacion);
+                    fechaFormateada = fecha.toLocaleDateString('es-MX', { timeZone: 'UTC' });
+                }
+                
+                const fila = document.createElement('tr');
+                fila.innerHTML = `
+                    <td>${historial.id_historial || ''}</td>
+                    <td>${historial.nombre_mascota || ''}</td>
+                    <td>${historial.enfermedades || ''}</td>
+                    <td>${historial.cirugias || ''}</td>
+                    <td>${historial.alergias || ''}</td>
+                    <td>${historial.medicacion || ''}</td>
+                    <td>${historial.vacunas || ''}</td>
+                    <td>${fechaFormateada || '-'}</td>
+                    <td>
+                        <button class="btn-editar" style="background:#639099; color:white; border:none; padding:5px 10px; border-radius:4px; cursor:pointer; font-weight:bold; margin-bottom:4px; width:90px; font-family:Century Gothic;">Editar</button>
+                        <button class="btn-borrar" style="background:#B03F58; color:white; border:none; padding:5px 10px; border-radius:4px; cursor:pointer; font-weight:bold; width:90px; font-family:Century Gothic;">Borrar</button>
+                    </td>
+                `;
+      
+                fila.querySelector('.btn-editar').addEventListener('click', () => {
+                    prepararEdicion(historial);
+                });
+      
+                fila.querySelector('.btn-borrar').addEventListener('click', () => {
+                    eliminarRegistro(historial.id_historial, historial.nombre_mascota);
+                });
+                
+                cuerpoTabla.appendChild(fila); 
+            });
+        }
+      
+        function buscarRegistro() {
+            const idInput = document.getElementById('input-buscar').value.trim();
+            if(!idInput) {
+                cargarTabla();
+                return;
+            }
+      
+            fetch(`/buscar-historial-por-id/${idInput}`)
+                .then(res => {
+                    if(!res.ok) throw new Error("No se encontró ningún historial con ese ID");
+                    return res.json();
+                })
+                .then(data => actualizarTabla(data))
+                .catch(err => {
+                    alert(err.message);
+                    cargarTabla();
+                });
+        }
+      
+        function eliminarRegistro(id, nombreMascota) {
+            if(confirm(`¿Estás seguro de eliminar el historial ID [${id}] de la mascota "${nombreMascota}"?`)) {
+                fetch(`/borrar-historial-por-id/${id}`, { method: 'POST' })
+                    .then(res => {
+                        if(!res.ok) throw new Error("No se pudo eliminar");
+                        return res.json();
+                    })
+                    .then(() => {
+                        alert(`El historial de "${nombreMascota}" fue eliminado con éxito`);
+                        cargarTabla(); 
+                    })
+                    .catch(err => alert("Ocurrió un error al intentar borrar"));
+            }
+        }
+      
+        function prepararEdicion(historial) {
+            idHistorialEdicion = historial.id_historial;
+      
+            document.getElementsByName('nombre_mascota')[0].value = historial.nombre_mascota || '';
+            document.getElementsByName('enfermedades')[0].value = historial.enfermedades || '';
+            document.getElementsByName('cirugias')[0].value = historial.cirugias || '';
+            document.getElementsByName('alergias')[0].value = historial.alergias || '';
+            document.getElementsByName('medicacion')[0].value = historial.medicacion || '';
+            document.getElementsByName('vacunas')[0].value = historial.vacunas || '';
+            
+            if (historial.desparasitacion) {
+                const fechaISO = historial.desparasitacion.split('T')[0];
+                document.getElementsByName('desparasitacion')[0].value = fechaISO;
+            } else {
+                document.getElementsByName('desparasitacion')[0].value = '';
+            }
+      
+            const botonForm = document.querySelector('.form-container .boton');
+            botonForm.innerText = "Guardar Cambios";
+            botonForm.style.background = "#639099";
+      
+            window.scrollTo({ top: 150, behavior: 'smooth' });
+        }
+      
+        window.addEventListener('DOMContentLoaded', () => {
+            cargarTabla(); 
+      
+            const formulario = document.querySelector('.form-container form');
+            formulario.addEventListener('submit', function(e) {
+                if (idHistorialEdicion !== null) {
+                    e.preventDefault(); 
+      
+                    const datosFormulario = {
+                        nombre_mascota: document.getElementsByName('nombre_mascota')[0].value,
+                        enfermedades: document.getElementsByName('enfermedades')[0].value,
+                        cirugias: document.getElementsByName('cirugias')[0].value,
+                        alergias: document.getElementsByName('alergias')[0].value,
+                        medicacion: document.getElementsByName('medicacion')[0].value,
+                        vacunas: document.getElementsByName('vacunas')[0].value,
+                        desparasitacion: document.getElementsByName('desparasitacion')[0].value
+                    };
+      
+                    fetch(`/editar-historial-por-id/${idHistorialEdicion}`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(datosFormulario)
+                    })
+                    .then(res => {
+                        if(!res.ok) throw new Error("Error al guardar los cambios");
+                        return res.json();
+                    })
+                    .then(() => {
+                        alert("Historial actualizado con éxito");
+                        formulario.reset();
+                        idHistorialEdicion = null;
+      
+                        const botonForm = formulario.querySelector('.boton');
+                        botonForm.innerText = "Registrar";
+                        botonForm.style.background = "#639099";
+      
+                        cargarTabla();
+                    })
+                    .catch(err => alert(err.message));
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

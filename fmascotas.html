@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mascotas - Vets & Co.</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #9EC7D9;
+    margin: 0px;
+    margin-top: 120px;
+    font-family: Verdana, Century Gothic;
+}
+
+header {
+    background-color: #FDFF85;
+    padding: 30px;
+
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    font-family: Century Gothic;
+    color: #FFC34F;
+
+    clip-path: ellipse(70% 100% at 50% 0%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    z-index: 1000;
+}
+
+header img {
+    position: absolute;
+    top: 40%;
+    left: 20px;
+    transform: translateY(-50%);
+    width: 90px;
+}
+
+nav { 
+    background-color: #86C2D9; 
+    padding-top: 50px; 
+    padding-bottom: 20px;
+    text-align: center;  
+    position: fixed; 
+    top: 83px; 
+    clip-path: ellipse(65% 100% at 50% 0%);
+    width: 100%;  
+    z-index: 999; 
+
+}
+
+nav a {
+    color: #FFFFFF;
+    text-decoration: none;
+    margin: 0 30px;
+    font-size: 18px;
+    font-family: Century Gothic;
+    font-weight: bold;
+}
+
+.adecoracion {
+    background-color: #FFFFFF;
+    padding: 315px;
+    margin-top: 200px;
+    clip-path: ellipse(70% 100% at 50% 100%);
+}
+
+.bdecoracion {
+    background-color: #FFFFFF;
+    padding: 315px;
+    margin-top: 0px;
+    clip-path: ellipse(70% 100% at 50% 0%);
+}
+
+h2 {
+    color: #2F4B52;
+    font-size: 25px;
+    font-family: Century Gothic;
+    font-weight: bold;
+    position: absolute;
+    top: 250px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.form-container {
+    background: #9EC7D9;
+    max-width: 600px;
+    width: 95%;
+    padding: 50px;
+    border-radius: 12px;
+    position: absolute;
+    top: 350px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 99;
+}
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #2F4B52;
+    font-size: 17px;
+    font-family: Century Gothic;
+}
+
+input[type="text"], input[type="number"], input[type="date"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #E0D0DD;
+    border-radius: 6px;
+    font-family: Century Gothic;
+    font-size: 18px;
+    background-color: #FAF7FA;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #E0D0DD;
+    border-radius: 6px;
+    font-family: Century Gothic;
+    font-size: 18px;
+    background-color: #FAF7FA;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.boton {
+    background-color: #639099;
+    color: #FFFFFF;
+    border: none;
+    padding: 14px 15px;
+    width: 100%;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: Century Gothic;
+    margin-top: 10px;
+}
+
+table {
+    border-collapse: separate;
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: center;
+    vertical-align: middle;
+    margin-left: auto; 
+    margin-right: auto;
+    margin-top: 50px;
+}
+
+th {
+    background-color: #FFFFFF;
+    font-family: Century Gothic;
+    font-weight: bold;
+    width: 130px;
+    height: 80px;
+    color: #2F4B52;
+}
+
+td {
+    background-color: #DBDBDB;
+    font-family: Century Gothic;
+    width: 130px;
+    height: 80px;
+    color: #000000;
+}
+
+.decoracion {
+    background-color: #FAFAFA;
+    padding: 100px;
+    margin-top: 50px;
+    margin-bottom: -200px;
+    clip-path: ellipse(55% 100% at 50% 100%);
+}
+
+footer {
+    background-color: #FFC34F;
+    clip-path: ellipse(65% 100% at 50% 100%);
+    margin-top: 50px;
+    margin-bottom: 0px;
+    padding: 100px;
+    
+    text-align: center;
+    color: #FFFFFF;
+    font-family: Century Gothic;
+    font-weight: bold;
+    line-height: 1.5;
+    letter-spacing: 3px;
+}
+
+</style>
+</head>
+
+<body>
+
+    <header>
+      <img src="Logo_VyC.png" alt="logo">
+      <span>Vets & Co.</span>
+    </header>
+
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="fmascotas.html">Mascotas</a>
+      <a href="fduenos.html">Dueños</a>
+      <a href="fhistorial.html">Historial Médico</a>
+      <a href="fempleados.html">Empleados</a>
+      <a href="finventario.html">Inventario</a>
+    </nav>
+
+  <main>
+
+    <section class="adecoracion">
+      <h2>Registrar Mascotas</h2>
+    </section>
+
+    <section class="bdecoracion">
+    </section> 
+    <div class="form-container">
+      <form action="/apifmascotas" method="POST">
+
+        <div class="form-group">
+          <label>Nombre de la Mascota</label>
+          <input type="text" name="nombre_mascota" placeholder="Ej: Molly" required>
+        </div>
+
+        <div class="form-group">
+          <label>Nombre del Dueño</label>
+          <input type="text" name="nombre_dueno" placeholder="Ej: Irais Silva" required>
+        </div>
+
+        <div class="form-group">
+          <label>Número de Microchip</label>
+          <input type="text" name="microchip" placeholder="Escribir '-' si no hay registro" required>
+        </div>
+
+        <div class="form-group">
+          <label>Especie</label>
+          <input type="text" name="especie" placeholder="Ej: Gato" required>
+        </div>
+
+        <div class="form-group">
+          <label>Raza</label>
+          <input type="text" name="raza" placeholder="Escribir 'SRD' si no hay registro" required>
+        </div>
+
+        <div class="form-group">
+          <label>Edad</label>
+          <input type="text" name="edad" placeholder="Escribir años o meses" required>
+        </div>
+
+        <div class="form-group">
+          <label>Peso</label>
+          <input type="text" name="peso" placeholder="Escribir unidades" required>
+        </div>
+
+        <div class="form-group">
+          <label>Sexo</label>
+            <select name="sexo" required>
+            <option value="" disabled selected>Selecciona una opción</option>
+            <option value="Macho">Macho</option>
+            <option value="Hembra">Hembra</option>
+            </select>
+        </div>
+
+        <button type="submit" class="boton">Registrar</button>
+
+      </form>
+    </div>
+
+    <div style="text-align: center; margin-top: 50px; margin-bottom: 20px;">
+      <input type="number" id="input-buscar" placeholder="Escribe el ID de la mascota" style="width: 280px; display: inline-block; padding: 10px; margin-right: 10px; font-family: Century Gothic; border-radius: 6px; border: 1px solid #639099; font-size: 16px;">
+      <button onclick="buscarRegistro()" class="boton" style="width: 120px; display: inline-block; margin-top: 0; padding: 11px;">Buscar</button>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID Mascota</th>
+          <th>Nombre de la Mascota</th>
+          <th>Nombre del Dueño</th>
+          <th>Número de Microchip</th>
+          <th>Especie</th>
+          <th>Raza</th>
+          <th>Edad</th>
+          <th>Peso</th>
+          <th>Sexo</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody id="tabla-mascotas"></tbody>
+    </table>
+
+  </main>
+
+  <section class="decoracion">
+  </section>
+  
+    <footer>
+      <p>Nombre: Dania Graciela Silva Heredia</p>
+      <p>No. Control: 24308051280665</p>
+      <p>Grado y grupo: 4ºI</p>
+      <p>Especialidad: Programación</p>
+    </footer>
+
+    <script>
+        let idMascotaEdicion = null;
+      
+        function cargarTabla() {
+            fetch('/obtenermascotas')
+                .then(res => res.json())
+                .then(mascotas => actualizarTabla(mascotas))
+                .catch(err => console.error("Error al cargar la tabla:", err));
+        }
+      
+        function actualizarTabla(lista) {
+            const cuerpoTabla = document.getElementById('tabla-mascotas');
+            if(!cuerpoTabla) return;
+            cuerpoTabla.innerHTML = ''; 
+      
+            if (!lista || lista.length === 0 || lista[0] === null) {
+                cuerpoTabla.innerHTML = `<tr><td colspan="10" style="background:#DBDBDB; color:#2F4B52; font-weight:bold; padding: 20px;">No se encontraron registros</td></tr>`;
+                return;
+            }
+      
+            lista.forEach(mascota => {
+                if(!mascota) return;
+                const fila = document.createElement('tr');
+                
+                fila.innerHTML = `
+                    <td>${mascota.id_mascota || ''}</td>
+                    <td>${mascota.nombre_mascota || ''}</td>
+                    <td>${mascota.nombre_dueno || ''}</td>
+                    <td>${mascota.microchip || ''}</td>
+                    <td>${mascota.especie || ''}</td>
+                    <td>${mascota.raza || ''}</td>
+                    <td>${mascota.edad || ''}</td>
+                    <td>${mascota.peso || ''}</td>
+                    <td>${mascota.sexo || ''}</td>
+                    <td>
+                        <button class="btn-editar" style="background:#639099; color:white; border:none; padding:5px 10px; border-radius:4px; cursor:pointer; font-weight:bold; margin-bottom:4px; width:90px; font-family:Century Gothic;">Editar</button>
+                        <button class="btn-borrar" style="background:#B03F58; color:white; border:none; padding:5px 10px; border-radius:4px; cursor:pointer; font-weight:bold; width:90px; font-family:Century Gothic;">Borrar</button>
+                    </td>
+                `;
+      
+                fila.querySelector('.btn-editar').addEventListener('click', () => {
+                    prepararEdicion(mascota.id_mascota, mascota.nombre_mascota, mascota.nombre_dueno, mascota.microchip, mascota.especie, mascota.raza, mascota.edad, mascota.peso, mascota.sexo);
+                });
+      
+                fila.querySelector('.btn-borrar').addEventListener('click', () => {
+                    eliminarRegistro(mascota.id_mascota, mascota.nombre_mascota);
+                });
+                
+                cuerpoTabla.appendChild(fila); 
+            });
+        }
+      
+        function buscarRegistro() {
+            const idInput = document.getElementById('input-buscar').value.trim();
+            if(!idInput) {
+                cargarTabla();
+                return;
+            }
+      
+            fetch(`/buscar-mascota-por-id/${idInput}`)
+                .then(res => {
+                    if(!res.ok) throw new Error("No se encontró ninguna mascota con ese ID");
+                    return res.json();
+                })
+                .then(data => actualizarTabla(data))
+                .catch(err => {
+                    alert(err.message);
+                    cargarTabla();
+                });
+        }
+      
+        function eliminarRegistro(id, nombre) {
+            if(confirm(`¿Estás seguro de eliminar a la mascota ID [${id}] - ${nombre}?`)) {
+                fetch(`/borrar-mascota-por-id/${id}`, { method: 'POST' })
+                    .then(res => {
+                        if(!res.ok) throw new Error("No se pudo eliminar");
+                        return res.json();
+                    })
+                    .then(() => {
+                        alert(`La mascota "${nombre}" fue eliminada con éxito`);
+                        cargarTabla(); 
+                    })
+                    .catch(err => alert("Ocurrió un error al intentar borrar"));
+            }
+        }
+      
+        function prepararEdicion(id, nombre, dueno, microchip, especie, raza, edad, peso, sexo) {
+            idMascotaEdicion = id;
+      
+            document.getElementsByName('nombre_mascota')[0].value = nombre || '';
+            document.getElementsByName('nombre_dueno')[0].value = dueno || '';
+            document.getElementsByName('microchip')[0].value = microchip || '';
+            document.getElementsByName('especie')[0].value = especie || '';
+            document.getElementsByName('raza')[0].value = raza || '';
+            document.getElementsByName('edad')[0].value = edad || '';
+            document.getElementsByName('peso')[0].value = peso || '';
+            document.getElementsByName('sexo')[0].value = sexo || '';
+      
+            const botonForm = document.querySelector('.form-container .boton');
+            botonForm.innerText = "Guardar Cambios";
+            botonForm.style.background = "#639099";
+      
+            window.scrollTo({ top: 150, behavior: 'smooth' });
+        }
+      
+        window.addEventListener('DOMContentLoaded', () => {
+            cargarTabla(); 
+      
+            const formulario = document.querySelector('.form-container form');
+            formulario.addEventListener('submit', function(e) {
+                if (idMascotaEdicion !== null) {
+                    e.preventDefault(); 
+      
+                    const datosFormulario = {
+                        nombre_mascota: document.getElementsByName('nombre_mascota')[0].value,
+                        nombre_dueno: document.getElementsByName('nombre_dueno')[0].value,
+                        microchip: document.getElementsByName('microchip')[0].value,
+                        especie: document.getElementsByName('especie')[0].value,
+                        raza: document.getElementsByName('raza')[0].value,
+                        edad: document.getElementsByName('edad')[0].value,
+                        peso: document.getElementsByName('peso')[0].value,
+                        sexo: document.getElementsByName('sexo')[0].value
+                    };
+      
+                    fetch(`/editar-mascota-por-id/${idMascotaEdicion}`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(datosFormulario)
+                    })
+                    .then(res => {
+                        if(!res.ok) throw new Error("Error al guardar los cambios");
+                        return res.json();
+                    })
+                    .then(() => {
+                        alert("Mascota actualizada con éxito");
+                        formulario.reset();
+                        idMascotaEdicion = null;
+      
+                        const botonForm = formulario.querySelector('.boton');
+                        botonForm.innerText = "Registrar";
+                        botonForm.style.background = "#639099";
+      
+                        cargarTabla();
+                    })
+                    .catch(err => alert(err.message));
+                }
+            });
+        });
+      </script>
+
+</body>
+</html>
